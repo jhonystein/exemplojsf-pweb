@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Registro de Contato</title>
+    </h:head>
+    <h:body>
+        <h:form id="contatoForm">
+            <h:messages />
+            <h:inputHidden id="id" value="#{contatoMB.bean.id}" />
+            <h:panelGrid columns="2">
+                
+                <h:outputLabel for="nome" value="Nome:"/>
+                <h:inputText id="nome" required="true" value="#{contatoMB.bean.nome}" />
+                
+                <h:outputLabel for="telefone" value="Telefone:"/>
+                <h:inputText id="telefone" value="#{contatoMB.bean.telefone}" />
+                
+                <h:outputLabel for="email" value="Email:"/>
+                <h:inputText id="email" value="#{contatoMB.bean.email}" />
+                
+                <h:outputLabel for="categoria" value="Categoria:"/>
+                <h:selectOneMenu value="#{contatoMB.bean.categoria}">
+                    <f:selectItems var="item" value="#{categoriaBean.list}"
+                                   itemLabel="#{item.nome}" itemValue="#{item}"/>
+                </h:selectOneMenu>
+                
+            </h:panelGrid>
+            <h:commandButton value="Salvar" action="#{contatoMB.salvar}" />
+            
+        </h:form>
+    </h:body>
+</html>
+
